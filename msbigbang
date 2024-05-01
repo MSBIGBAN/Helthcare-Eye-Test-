@@ -1,0 +1,34 @@
+import random
+
+def generate_random_string(length):
+    letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    return ''.join(random.choice(letters) for _ in range(length))
+
+def present_test():
+    test_length = 5  # Adjust this to change the length of the test
+    test_string = generate_random_string(test_length)
+    print("Please type the following characters:")
+    print(test_string)
+    user_input = input("Type here: ")
+    return test_string == user_input.upper()
+
+def main():
+    print("Welcome to the Eye Vision Test App!")
+    print("You will be presented with a series of characters to type.")
+    print("Let's begin:")
+    
+    num_trials = 3  # Adjust this to change the number of trials
+    num_correct = 0
+    
+    for _ in range(num_trials):
+        if present_test():
+            print("Correct!")
+            num_correct += 1
+        else:
+            print("Incorrect!")
+    
+    accuracy = (num_correct / num_trials) * 100
+    print("Test complete. Your accuracy rate is {:.2f}%".format(accuracy))
+
+if __name__ == "__main__":
+    main()
